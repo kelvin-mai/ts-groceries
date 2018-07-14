@@ -7,7 +7,7 @@ app.get('/', (req, res) => {
 });
 
 export const server = () => {
-  app.listen(8080);
-  console.log(`Server started at http://localhost:${8080}`);
+  app.listen(process.env.PORT);
+  console.log(`Server started at http://localhost:${process.env.PORT}`);
   console.log(`Press Ctrl+C to quit`);
 };
