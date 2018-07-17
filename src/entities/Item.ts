@@ -3,8 +3,10 @@ import {
   BaseEntity,
   PrimaryGeneratedColumn,
   Column,
-  CreateDateColumn
+  CreateDateColumn,
+  ManyToOne
 } from 'typeorm';
+import { GroceryList } from './GroceryList';
 
 @Entity('items')
 export class Item extends BaseEntity {
@@ -19,4 +21,7 @@ export class Item extends BaseEntity {
     type: 'timestamp'
   })
   created: string;
+
+  @ManyToOne(type => GroceryList, groceryList => groceryList.items)
+  grocery_list: GroceryList;
 }

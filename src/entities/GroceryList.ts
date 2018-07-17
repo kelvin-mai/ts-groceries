@@ -5,7 +5,8 @@ import {
   Column,
   CreateDateColumn,
   JoinColumn,
-  ManyToOne
+  ManyToOne,
+  OneToMany
 } from 'typeorm';
 import { Item } from './Item';
 
@@ -24,7 +25,7 @@ export class GroceryList extends BaseEntity {
   })
   created: string;
 
-  @ManyToOne(type => Item, { cascade: true })
+  @OneToMany(type => Item, item => item.grocery_list)
   @JoinColumn()
   items: Item[];
 }
